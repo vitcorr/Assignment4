@@ -1,6 +1,6 @@
 Victor Kolawole
 101201377
-
+youtube link - https://youtu.be/1YSn0DX7h4k
 HOW TO SETUP DATABASE
 	-Open PgAdmin 4 and create a new Database by right clicking on Databases>Create>Database
 	-Name it and save it
