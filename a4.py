@@ -1,14 +1,19 @@
 import psycopg2
 
+#user credentials
+datab = input("Enter database name: ")
+pas = input("Enter your database password: ")
+hos = input("Enter database host: ")
+
 
 def connect():
     try:
         conn = psycopg2.connect(
             user = "postgres",
-            password = "Calcium02",
-            host = "localhost",
+            password = pas,
+            host = hos,
             port = "5432",
-            database = "Assignment4_3005"
+            database = datab
         )
         return conn
 
@@ -85,8 +90,48 @@ def deleteStudent(student_id):
             print(error)
         finally:
             conn.close()
+
 # test
 # getAllStudents()
 # addStudent('vic', 'kol', 'MEEEE.kol@example.com', '2023-02-02')
 # updateStudentEmail(4, "updated.email@example.com")
 # deleteStudent(4)
+
+def main():
+    
+
+    while True:
+        print("Select an option\n")
+        print("1 = get all student records")
+        print("2 = insert new student record")
+        print("3 = update student email")
+        print("4 = delete the student record")
+        print("q = exit program\n")
+        option = input("Enter your option: ")
+
+        if option == "1":
+            getAllStudents()
+            print("\n")
+        elif option == "2":
+            first_name = input("Enter firstname: ") 
+            last_name = input("Enter lastname: ")
+            email = input("Enter email: ") 
+            enrollment_date = input("Enter enrollment date(yyyy-mm-dd): ") 
+            addStudent(first_name, last_name, email, enrollment_date)
+            print("\n")
+        elif option == "3":
+            student_id = input("Enter student ID: ") 
+            new_email = input("Enter new email: ")
+            updateStudentEmail(student_id, new_email)
+            print("\n")
+        elif option == "4":
+            student_id = input("Enter ID to be deleted: ") 
+            deleteStudent(student_id)
+            print("\n")
+        elif option == "q":
+            break
+
+
+
+if __name__ == '__main__':
+    main()
